@@ -1,93 +1,78 @@
-# Tareas de Corrección - Sistema de Autenticación
+# Tareas de Desarrollo - Sistema Orto-Whave
+## Nuevas Prioridades Críticas del Usuario
 
-## 🔴 TAREAS CRÍTICAS (NUEVO DIAGNÓSTICO)
+### 🔥 CRÍTICAS (IMPLEMENTAR AHORA)
 
-### 1. [COMPLETED] Corregir inconsistencia en roles de administrador
+### 1. [COMPLETED] Sistema básico de citas
 - **Estado**: completed
-- **Descripción**: La base de datos tiene rol 'admin' pero AuthService espera 'administrador'
-- **Problema**: En `auth.service.ts` línea 137, `getRedirectPath` no reconoce el rol 'admin'
-- **Archivos afectados**:
-  - `backend/src/auth/auth.service.ts` (método getRedirectPath)
-  - `backend/insert-roles.sql`
+- **Descripción**: Implementar sistema completo de agendamiento de citas
+- **Funcionalidades**:
+  - Doctores pueden crear, modificar y ver citas
+  - Pacientes pueden agendar citas con doctores disponibles
+  - Sistema de aprobación de citas por administrador
+  - Ver espacios disponibles de doctores
+- **Archivos a crear**:
+  - `backend/src/citas/` (módulo completo)
+  - `frontend/my-app/src/components/citas/` (componentes React)
 - **Prioridad**: CRÍTICA
 
-### 2. [COMPLETED] Verificar estrategia JWT
-- **Estado**: completed
-- **Descripción**: La estrategia JWT ya existe y está correctamente configurada
-- **Archivos afectados**:
-  - `backend/src/auth/jwt.strategy.ts` ✅
-  - `backend/src/auth/auth.module.ts` ✅
-- **Prioridad**: VERIFICADA
-
-### 3. [COMPLETED] Verificar relaciones de base de datos
-- **Estado**: completed
-- **Descripción**: Verificar que las relaciones User->Role estén funcionando correctamente
-- **Problema**: user.rol.nombre debe cargar correctamente
-- **Prioridad**: ALTA
-
-### 4. [COMPLETED] Probar autenticación completa
-- **Estado**: completed
-- **Descripción**: Probar login con todos los tipos de roles una vez corregidas las inconsistencias
-- **Prioridad**: ALTA
-
-### 5. [COMPLETED] Limpiar caracteres extraños en archivos
-- **Estado**: completed
-- **Descripción**: Eliminar caracteres no printables de archivos clave
-- **Archivos afectados**:
-  - `frontend/my-app/src/services/api.js`
-  - `backend/src/auth/auth.controller.ts`
-- **Prioridad**: ALTA
-
-### 6. [COMPLETED] Implementar DTOs de validación
-- **Estado**: completed
-- **Descripción**: Crear DTOs para validar datos de entrada en auth
-- **Archivos afectados**:
-  - `backend/src/auth/dto/login.dto.ts` (nuevo)
-  - `backend/src/auth/dto/register.dto.ts` (nuevo)
-  - `backend/src/auth/auth.controller.ts`
-- **Prioridad**: MEDIA
-
-### 7. [COMPLETED] Mejorar manejo de errores
-- **Estado**: completed
-- **Descripción**: Usar excepciones apropiadas de NestJS
-- **Archivos afectados**:
-  - `backend/src/auth/auth.controller.ts`
-- **Prioridad**: MEDIA
-
-### 8. [COMPLETED] Configurar variables de entorno
-- **Estado**: completed
-- **Descripción**: Crear archivo .env.example y mejorar configuración
-- **Archivos afectados**:
-  - `backend/.env.example` (nuevo)
-  - `backend/src/config/database.config.ts`
-- **Prioridad**: MEDIA
-
-### 9. [COMPLETED] Probar sistema completo
-- **Estado**: completed
-- **Descripción**: Frontend funcionando correctamente en http://localhost:3000
-- **Prioridad**: ALTA
-
-### 10. [COMPLETED] Alinear tipos TypeScript
-- **Estado**: completed
-- **Descripción**: ✅ Tipos alineados para usar consistentemente 'rol' en lugar de 'role'
-- **Archivos afectados**:
-  - User.ts, varios componentes
-- **Prioridad**: MEDIA
-
-### 11. [IN_PROGRESS] Probar autenticación end-to-end
-- **Estado**: in_progress
-- **Descripción**: Probar sistema completo de login/registro una vez configurada la BD
-- **Prioridad**: ALTA
-
-### 12. [PENDING] Crear script de inicialización
+### 2. [PENDING] Gestión de pacientes completa
 - **Estado**: pending
-- **Descripción**: Script para facilitar setup en otros entornos
-- **Prioridad**: BAJA
+- **Descripción**: Ampliar gestión de pacientes con datos médicos completos
+- **Funcionalidades**:
+  - Historial médico completo
+  - Datos personales expandidos
+  - Gestión por doctores y administradores
+- **Archivos a crear**:
+  - `backend/src/pacientes/` (entidades expandidas)
+  - `backend/src/historia-clinica/` (nuevo módulo)
+- **Prioridad**: CRÍTICA
 
-### 10. [PENDING] Documentar cambios
+### 3. [PENDING] Nuevos roles y permisos
 - **Estado**: pending
-- **Descripción**: Crear documentación de los cambios realizados
-- **Prioridad**: BAJA
+- **Descripción**: Implementar funcionalidades específicas por rol
+- **Funcionalidades**:
+  - **Administrador**: Agregar doctores/pacientes sin verificación, aprobar citas
+  - **Doctores**: Gestión completa de citas, historial médico, horarios
+  - **Pacientes**: Agendar citas, ver disponibilidad, confirmación
+  - **Registro frontend**: Solo para pacientes
+- **Prioridad**: CRÍTICA
+
+### 🟡 IMPORTANTES (SIGUIENTE FASE)
+
+### 4. [PENDING] Notificaciones por email
+- **Estado**: pending
+- **Descripción**: Sistema de notificaciones para recordatorios y confirmaciones
+- **Prioridad**: IMPORTANTE
+
+### 5. [PENDING] Reportes básicos
+- **Estado**: pending
+- **Descripción**: Reportes para administradores y doctores
+- **Prioridad**: IMPORTANTE
+
+### 🟢 DESEABLES (FUTURO)
+
+### 6. [NOT_PLANNED] Sistema de pagos
+- **Estado**: not_planned
+- **Descripción**: Por el momento no se implementará
+- **Prioridad**: DESEABLE (no hacer)
+
+## 📋 PLAN DE IMPLEMENTACIÓN
+
+### Fase 1: Backend Core (Semana 1)
+1. Crear entidades de Citas, Historia Clínica, Perfil Médico
+2. Implementar servicios de gestión de citas
+3. Crear APIs para roles específicos
+
+### Fase 2: Frontend Funcional (Semana 2)
+1. Dashboards específicos por rol
+2. Componentes de agendamiento de citas
+3. Interfaces de gestión de pacientes
+
+### Fase 3: Integración y Testing (Semana 3)
+1. Integración completa frontend-backend
+2. Testing de funcionalidades críticas
+3. Implementación de notificaciones
 
 ## ✅ TAREAS COMPLETADAS
 
