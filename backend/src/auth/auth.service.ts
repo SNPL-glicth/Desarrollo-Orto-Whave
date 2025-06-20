@@ -134,7 +134,7 @@ export class AuthService {
 
   private getRedirectPath(rol: string): string {
     const redirectPaths = {
-      administrador: '/dashboard/admin',
+      admin: '/dashboard/admin',
       doctor: '/dashboard/doctor',
       paciente: '/dashboard/patient',
     };
