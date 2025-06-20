@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import UserOffcanvas from './UserOffcanvas.tsx';
+import UserOffcanvas from './UserOffcanvas';
 
-export const AdminDashboard: React.FC = () => {
+const AdminDashboard: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -328,4 +328,4 @@ export const AdminDashboard: React.FC = () => {
   );
 };
 
-export default AdminDashboard; 
+export default AdminDashboard;

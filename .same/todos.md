@@ -48,12 +48,24 @@
   - `backend/src/config/database.config.ts`
 - **Prioridad**: MEDIA
 
-### 7. [IN_PROGRESS] Probar sistema completo
-- **Estado**: in_progress
-- **Descripción**: Instalar dependencias y probar login/registro
+### 7. [COMPLETED] Probar sistema completo
+- **Estado**: completed
+- **Descripción**: Frontend funcionando correctamente en http://localhost:3000
 - **Prioridad**: ALTA
 
-### 8. [PENDING] Documentar cambios
+### 8. [PENDING] Arreglar componentes Dashboard
+- **Estado**: pending
+- **Descripción**: Los componentes AdminDashboard, DoctorDashboard y PatientDashboard tienen problemas de imports/exports que impiden su compilación
+- **Archivos afectados**:
+  - AdminDashboard.tsx, DoctorDashboard.tsx, PatientDashboard.tsx
+- **Prioridad**: MEDIA
+
+### 9. [PENDING] Configurar y probar backend
+- **Estado**: pending
+- **Descripción**: Instalar y configurar MySQL, ejecutar migraciones y probar endpoints de autenticación
+- **Prioridad**: ALTA
+
+### 10. [PENDING] Documentar cambios
 - **Estado**: pending
 - **Descripción**: Crear documentación de los cambios realizados
 - **Prioridad**: BAJA

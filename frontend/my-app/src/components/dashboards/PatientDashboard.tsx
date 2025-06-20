@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import UserOffcanvas from './UserOffcanvas.tsx';
+import UserOffcanvas from './UserOffcanvas';
 
 interface Cita {
   fecha: string;
@@ -18,7 +18,7 @@ interface Tratamiento {
   duracionEstimada: string;
 }
 
-export const PatientDashboard: React.FC = () => {
+const PatientDashboard: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -505,7 +505,7 @@ export const PatientDashboard: React.FC = () => {
                           </div>
                           <div className="flex items-center space-x-4">
                             <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                              doc.estado === 'aprobado' 
+                              doc.estado === 'aprobado'
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-yellow-100 text-yellow-800'
                             }`}>
@@ -565,4 +565,4 @@ export const PatientDashboard: React.FC = () => {
   );
 };
 
-export default PatientDashboard; 
+export default PatientDashboard;

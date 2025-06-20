@@ -6,17 +6,16 @@ import VerificationPage from './pages/VerificationPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
-import AdminDashboard from './components/dashboards/AdminDashboard';
-import DoctorDashboard from './components/dashboards/DoctorDashboard';
-import PatientDashboard from './components/dashboards/PatientDashboard';
 import { useAuth } from './context/AuthContext';
 
 function ProtectedRoute({ children, role }) {
   const { user } = useAuth();
   if (!user) return <Navigate to="/login" />;
-  if (role && user.role?.toLowerCase() !== role) return <Navigate to="/" />;
+  if (role && user.rol?.toLowerCase() !== role) return <Navigate to="/" />;
   return children;
 }
+
+const TempDashboard = () => <div>Dashboard Temporal</div>;
 
 const App: React.FC = () => {
   return (
@@ -27,22 +26,32 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/verify" element={<VerificationPage />} />
-            <Route path="/dashboard/admin" element={
-              <ProtectedRoute role="administrador">
-                <AdminDashboard />
-              </ProtectedRoute>
-            } />
-            <Route path="/dashboard/doctor" element={
-              <ProtectedRoute role="doctor">
-                <DoctorDashboard />
-              </ProtectedRoute>
-            } />
-            <Route path="/dashboard/patient" element={
-              <ProtectedRoute role="paciente">
-                <PatientDashboard />
-              </ProtectedRoute>
-            } />
+            <Route path="/verification" element={<VerificationPage />} />
+            <Route
+              path="/dashboard/admin"
+              element={
+                <ProtectedRoute role="administrador">
+                  <TempDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/doctor"
+              element={
+                <ProtectedRoute role="doctor">
+                  <TempDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/patient"
+              element={
+                <ProtectedRoute role="paciente">
+                  <TempDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/dashboard" element={<TempDashboard />} />
           </Routes>
         </Router>
       </CartProvider>
@@ -50,4 +59,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App; 
+export default App;
