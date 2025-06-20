@@ -33,14 +33,14 @@ export const AuthProvider = ({ children }) => {
     try {
       console.log('Iniciando login con:', email);
       const response = await authService.login(email, password);
-      
+
       if (response.access_token) {
         setUser(response.user);
-        
+
         // Determinar la URL de redirección basada en el rol
         let redirectUrl = '/dashboard';
-        const userRole = response.user.role?.toLowerCase();
-        
+        const userRole = response.user.rol?.toLowerCase();
+
         if (userRole === 'administrador') {
           redirectUrl = '/dashboard/admin';
         } else if (userRole === 'doctor') {
@@ -48,13 +48,13 @@ export const AuthProvider = ({ children }) => {
         } else if (userRole === 'paciente') {
           redirectUrl = '/dashboard/patient';
         }
-        
+
         console.log('Login exitoso:', {
           user: response.user,
           redirectUrl,
           token: response.access_token.substring(0, 20) + '...'
         });
-        
+
         toast.success('¡Inicio de sesión exitoso!');
         return { ...response, redirectUrl };
       } else {
@@ -118,4 +118,4 @@ export const withAuthNavigation = (Component) => {
     const auth = useAuth();
     return <Component {...props} auth={auth} />;
   };
-}; 
+};

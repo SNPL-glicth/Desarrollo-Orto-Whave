@@ -1,6 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { config } from 'dotenv';
-import { execSync } from 'child_process';
 
 config();
 
@@ -12,14 +11,14 @@ export const databaseConfig: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD || 'Root1234a',
   database: process.env.DB_DATABASE || 'orto_whave_db',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-  synchronize: false, // Desactivamos la sincronización automática
-  migrationsRun: true, // Ejecutamos las migraciones al iniciar
-  logging: true, // Activamos el logging para ver las consultas SQL
+  synchronize: false, // Mantener en false para producción
+  migrationsRun: true,
+  logging: process.env.NODE_ENV === 'development', // Solo log en desarrollo
+  migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
   extra: {
-    authPlugins: {
-      mysql_clear_password: () => () => {
-        return execSync('sudo cat /dev/null').toString();
-      }
-    }
+    connectionLimit: 10,
+    acquireTimeout: 60000,
+    timeout: 60000,
   }
-}; 
+};

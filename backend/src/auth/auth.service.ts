@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../users/entities/user.entity';
-import * as crypto from 'crypto';
+import * as bcrypt from 'bcrypt';
 import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
@@ -16,11 +16,6 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string): Promise<any> {
-    const hashedPassword = crypto
-      .createHash('sha256')
-      .update(password)
-      .digest('hex');
-
     const user = await this.usersRepository.findOne({
       where: { email },
       relations: ['rol'],
@@ -29,10 +24,15 @@ export class AuthService {
     if (!user) {
       return null;
     }
+
     if (!user.isVerified) {
       throw new UnauthorizedException('La cuenta no ha sido verificada. Por favor revisa tu correo.');
     }
-    if (user.password === hashedPassword) {
+
+    // Usar bcrypt para comparar contraseñas
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (isPasswordValid) {
       const { password, ...result } = user;
       return result;
     }
@@ -79,10 +79,9 @@ export class AuthService {
     // Generar código de verificación de 6 dígitos
     const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
 
-    const hashedPassword = crypto
-      .createHash('sha256')
-      .update(userData.password)
-      .digest('hex');
+    // Usar bcrypt para hashear la contraseña de forma segura
+    const saltRounds = 12; // Usar 12 rounds para mayor seguridad
+    const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
 
     const newUser = this.usersRepository.create({
       ...userData,
@@ -95,15 +94,20 @@ export class AuthService {
     await this.usersRepository.save(newUser);
 
     // Enviar correo de verificación
-    await this.mailerService.sendMail({
-      to: userData.email,
-      subject: 'Verifica tu cuenta en Orto-Whave',
-      template: './verification',
-      context: {
-        verificationCode,
-        email: userData.email,
-      },
-    });
+    try {
+      await this.mailerService.sendMail({
+        to: userData.email,
+        subject: 'Verifica tu cuenta en Orto-Whave',
+        template: './verification',
+        context: {
+          verificationCode,
+          email: userData.email,
+        },
+      });
+    } catch (error) {
+      console.error('Error al enviar correo de verificación:', error);
+      // No lanzar error aquí para no fallar el registro
+    }
 
     return {
       message: 'Usuario registrado exitosamente. Por favor revisa tu correo para verificar tu cuenta.',
@@ -136,4 +140,4 @@ export class AuthService {
     };
     return redirectPaths[rol] || '/';
   }
-} 
+}

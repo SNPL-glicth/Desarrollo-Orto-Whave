@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { User } from '../users/entities/user.entity';
@@ -9,10 +10,17 @@ import { MailModule } from '../mail/mail.module';
 
 @Module({
   imports: [
+    ConfigModule,
     TypeOrmModule.forFeature([User, Role]),
-    JwtModule.register({
-      secret: 'tu_clave_secreta', // En producción, usar variables de entorno
-      signOptions: { expiresIn: '1d' },
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET') || 'fallback_secret_key_change_in_production',
+        signOptions: {
+          expiresIn: configService.get<string>('JWT_EXPIRES_IN') || '24h'
+        },
+      }),
+      inject: [ConfigService],
     }),
     MailModule,
   ],
@@ -20,4 +28,4 @@ import { MailModule } from '../mail/mail.module';
   providers: [AuthService],
   exports: [AuthService],
 })
-export class AuthModule {} 
+export class AuthModule {}

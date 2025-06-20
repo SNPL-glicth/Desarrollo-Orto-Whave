@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                import axios from 'axios';
+import axios from 'axios';
 
 // Crear una instancia de axios con la configuración base
 const api = axios.create({
@@ -33,6 +33,7 @@ api.interceptors.response.use(
       // El servidor respondió con un código de estado fuera del rango 2xx
       if (error.response.status === 401) {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         window.location.href = '/login';
       }
       return Promise.reject({
@@ -64,4 +65,4 @@ export const userService = {
   deactivateUser: (id) => api.put(`/usuarios/${id}/desactivar`),
 };
 
-export default api; 
+export default api;
