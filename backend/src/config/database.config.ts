@@ -3,7 +3,18 @@ import { config } from 'dotenv';
 
 config();
 
-export const databaseConfig: TypeOrmModuleOptions = {
+// Configuración para desarrollo con SQLite
+const developmentConfig: TypeOrmModuleOptions = {
+  type: 'sqlite',
+  database: 'orto_whave_dev.db',
+  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  synchronize: true, // Solo para desarrollo
+  logging: true,
+  migrationsRun: false, // No ejecutar migraciones en desarrollo con SQLite
+};
+
+// Configuración para producción con MySQL
+const productionConfig: TypeOrmModuleOptions = {
   type: 'mysql',
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT || '3306', 10),
@@ -13,12 +24,15 @@ export const databaseConfig: TypeOrmModuleOptions = {
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: false, // Mantener en false para producción
   migrationsRun: true,
-  logging: process.env.NODE_ENV === 'development', // Solo log en desarrollo
+  logging: false,
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  ssl: { rejectUnauthorized: false },
   extra: {
     connectionLimit: 10,
     acquireTimeout: 60000,
     timeout: 60000,
   }
 };
+
+export const databaseConfig: TypeOrmModuleOptions =
+  process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig;

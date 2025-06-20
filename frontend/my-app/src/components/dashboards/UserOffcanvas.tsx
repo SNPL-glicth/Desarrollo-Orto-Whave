@@ -44,7 +44,7 @@ const UserOffcanvas: React.FC<UserOffcanvasProps> = ({ show, onClose, user }) =>
             </div>
             <div>
                       <h3 className="text-sm font-medium text-gray-500">Rol</h3>
-                      <p className="mt-1 text-sm text-gray-900">{user.role}</p>
+                      <p className="mt-1 text-sm text-gray-900">{user.rol}</p>
                     </div>
                     {user.telefono && (
                       <div>
@@ -79,4 +79,4 @@ const UserOffcanvas: React.FC<UserOffcanvasProps> = ({ show, onClose, user }) =>
   );
 };
 
-export default UserOffcanvas; 
+export default UserOffcanvas;

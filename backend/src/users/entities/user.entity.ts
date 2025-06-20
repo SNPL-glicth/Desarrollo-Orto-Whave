@@ -31,7 +31,7 @@ export class User {
   @JoinColumn({ name: 'rol_id' })
   rol: Role;
 
-  @Column({ name: 'fecha_creacion', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'fecha_creacion', type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   fechaCreacion: Date;
 
   @Column({ name: 'is_verified', default: false })
@@ -39,4 +39,4 @@ export class User {
 
   @Column({ name: 'verification_code', nullable: true, length: 10 })
   verificationCode: string;
-} 
+}

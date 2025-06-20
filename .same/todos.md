@@ -53,17 +53,36 @@
 - **Descripción**: Frontend funcionando correctamente en http://localhost:3000
 - **Prioridad**: ALTA
 
-### 8. [PENDING] Arreglar componentes Dashboard
-- **Estado**: pending
-- **Descripción**: Los componentes AdminDashboard, DoctorDashboard y PatientDashboard tienen problemas de imports/exports que impiden su compilación
+### 8. [COMPLETED] Configurar base de datos local
+- **Estado**: completed
+- **Descripción**: ✅ SQLite configurado exitosamente para desarrollo. Backend funcionando en http://localhost:4000 con roles insertados
 - **Archivos afectados**:
-  - AdminDashboard.tsx, DoctorDashboard.tsx, PatientDashboard.tsx
+  - backend/package.json, database.config.ts, entidades
+- **Prioridad**: ALTA
+
+### 9. [COMPLETED] Arreglar componentes Dashboard
+- **Estado**: completed
+- **Descripción**: ✅ Componentes Dashboard funcionando correctamente. Frontend compilando en http://localhost:3000
+- **Archivos afectados**:
+  - AdminDashboard.tsx, DoctorDashboard.tsx, PatientDashboard.tsx, UserOffcanvas.tsx
 - **Prioridad**: MEDIA
 
-### 9. [PENDING] Configurar y probar backend
-- **Estado**: pending
-- **Descripción**: Instalar y configurar MySQL, ejecutar migraciones y probar endpoints de autenticación
+### 10. [COMPLETED] Alinear tipos TypeScript
+- **Estado**: completed
+- **Descripción**: ✅ Tipos alineados para usar consistentemente 'rol' en lugar de 'role'
+- **Archivos afectados**:
+  - User.ts, varios componentes
+- **Prioridad**: MEDIA
+
+### 11. [IN_PROGRESS] Probar autenticación end-to-end
+- **Estado**: in_progress
+- **Descripción**: Probar sistema completo de login/registro una vez configurada la BD
 - **Prioridad**: ALTA
+
+### 12. [PENDING] Crear script de inicialización
+- **Estado**: pending
+- **Descripción**: Script para facilitar setup en otros entornos
+- **Prioridad**: BAJA
 
 ### 10. [PENDING] Documentar cambios
 - **Estado**: pending

@@ -12,9 +12,9 @@ export class Role {
   @Column({ default: true })
   activo: boolean;
 
-  @Column({ name: 'fecha_creacion', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'fecha_creacion', type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   fechaCreacion: Date;
 
   @OneToMany(() => User, user => user.rol)
   usuarios: User[];
-} 
+}
