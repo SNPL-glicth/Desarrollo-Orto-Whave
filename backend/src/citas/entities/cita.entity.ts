@@ -27,15 +27,15 @@ export class Cita {
   duracion: number;
 
   @Column({
-    type: 'enum',
-    enum: ['pendiente', 'confirmada', 'aprobada', 'en_curso', 'completada', 'cancelada', 'no_asistio'],
+    type: 'varchar',
+    length: 20,
     default: 'pendiente'
   })
   estado: string;
 
   @Column({
-    type: 'enum',
-    enum: ['primera_vez', 'control', 'seguimiento', 'urgencia'],
+    type: 'varchar',
+    length: 20,
     default: 'primera_vez'
   })
   tipoConsulta: string;

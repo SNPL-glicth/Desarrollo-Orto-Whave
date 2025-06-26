@@ -19,8 +19,8 @@ export class Paciente {
 
   @Column({
     name: 'tipo_identificacion',
-    type: 'enum',
-    enum: ['CC', 'TI', 'PP', 'CE', 'PEP'],
+    type: 'varchar',
+    length: 10,
     default: 'CC'
   })
   tipoIdentificacion: string;
@@ -29,8 +29,8 @@ export class Paciente {
   fechaNacimiento: Date;
 
   @Column({
-    type: 'enum',
-    enum: ['masculino', 'femenino', 'otro'],
+    type: 'varchar',
+    length: 20,
     default: 'masculino'
   })
   genero: string;

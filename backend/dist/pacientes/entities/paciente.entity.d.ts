@@ -1,0 +1,36 @@
+import { User } from '../../users/entities/user.entity';
+export declare class Paciente {
+    id: number;
+    usuarioId: number;
+    usuario: User;
+    numeroIdentificacion: string;
+    tipoIdentificacion: string;
+    fechaNacimiento: Date;
+    genero: string;
+    estadoCivil: string;
+    ocupacion: string;
+    ciudadResidencia: string;
+    barrio: string;
+    eps: string;
+    numeroAfiliacion: string;
+    tipoAfiliacion: string;
+    contactoEmergenciaNombre: string;
+    contactoEmergenciaTelefono: string;
+    contactoEmergenciaParentesco: string;
+    antecedentesMedicos: string;
+    antecedentesQuirurgicos: string;
+    antecedentesFamiliares: string;
+    alergias: string;
+    medicamentosActuales: string;
+    peso: number;
+    estatura: number;
+    grupoSanguineo: string;
+    aceptaComunicaciones: boolean;
+    prefiereWhatsapp: boolean;
+    prefiereEmail: boolean;
+    prefiereSms: boolean;
+    activo: boolean;
+    primeraConsulta: boolean;
+    fechaRegistro: Date;
+    fechaActualizacion: Date;
+}
