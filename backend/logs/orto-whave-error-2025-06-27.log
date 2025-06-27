@@ -38,3 +38,18 @@ Stack: Error al enviar el correo de recuperación.
 2025-06-27 04:09:15 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"112ms","error":"Error al enviar el correo de recuperación."}
 Stack: BadRequestException: Error al enviar el correo de recuperación.
     at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:32:12 [ERROR] [LoggingInterceptor] Error Response: POST /auth/login - 401 | Meta: {"method":"POST","url":"/auth/login","statusCode":401,"duration":"271ms","error":"Credenciales inválidas"}
+Stack: UnauthorizedException: Credenciales inválidas
+    at AuthController.login (/home/project/Desarrollo-Orto-Whave/backend/src/auth/auth.controller.ts:21:13)
+2025-06-27 04:33:59 [ERROR] [LoggingInterceptor] Error Response: POST /users/admin/crear-usuario - 500 | Meta: {"method":"POST","url":"/users/admin/crear-usuario","statusCode":500,"duration":"276ms","error":"SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id"}
+Stack: QueryFailedError: SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id
+    at Statement.handler (/home/project/Desarrollo-Orto-Whave/backend/node_modules/typeorm/src/driver/sqlite/SqliteQueryRunner.ts:133:29)
+2025-06-27 04:33:59 [ERROR] [ExceptionsHandler] SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id
+Stack: QueryFailedError: SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id
+    at Statement.handler (/home/project/Desarrollo-Orto-Whave/backend/node_modules/typeorm/src/driver/sqlite/SqliteQueryRunner.ts:133:29)
+2025-06-27 04:33:59 [ERROR] [LoggingInterceptor] Error Response: POST /users/admin/crear-usuario - 500 | Meta: {"method":"POST","url":"/users/admin/crear-usuario","statusCode":500,"duration":"269ms","error":"SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id"}
+Stack: QueryFailedError: SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id
+    at Statement.handler (/home/project/Desarrollo-Orto-Whave/backend/node_modules/typeorm/src/driver/sqlite/SqliteQueryRunner.ts:133:29)
+2025-06-27 04:33:59 [ERROR] [ExceptionsHandler] SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id
+Stack: QueryFailedError: SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios.rol_id
+    at Statement.handler (/home/project/Desarrollo-Orto-Whave/backend/node_modules/typeorm/src/driver/sqlite/SqliteQueryRunner.ts:133:29)

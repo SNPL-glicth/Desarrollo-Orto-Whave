@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { useAuth } from '../context/AuthContext';
 
 const CreateUserForm = ({ onClose, onUserCreated }) => {
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     nombre: '',
     apellido: '',
@@ -44,17 +46,27 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:4000/users/public/crear-usuario', {
+      // Obtener token del localStorage
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        toast.error('No tienes autorización para crear usuarios');
+        return;
+      }
+
+      // Usar el endpoint de admin para crear usuarios sin verificación
+      const response = await fetch('http://localhost:4000/users/admin/crear-usuario', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(formData)
       });
 
       if (response.ok) {
         const data = await response.json();
-        toast.success('Usuario creado exitosamente');
+        toast.success('Usuario creado exitosamente (sin verificación requerida)');
         onUserCreated && onUserCreated(data);
 
         // Limpiar formulario
@@ -85,7 +97,12 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
       <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
         <div className="mt-3">
-          <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">Crear Nuevo Usuario</h3>
+          <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">
+            Crear Nuevo Usuario (Sin Verificación)
+          </h3>
+          <p className="text-sm text-gray-600 mb-4">
+            Los usuarios creados por admin no requieren verificación de email
+          </p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">Nombre</label>
@@ -172,6 +189,12 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div className="bg-green-50 border border-green-200 rounded-md p-3">
+              <p className="text-sm text-green-700">
+                ✅ Los usuarios creados estarán verificados automáticamente
+              </p>
             </div>
 
             <div className="flex justify-end space-x-3 mt-5">

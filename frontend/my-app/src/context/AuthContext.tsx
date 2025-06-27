@@ -20,10 +20,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [error, setError] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const mapRoleToValidRole = (rol: string): 'administrador' | 'doctor' | 'paciente' => {
+  const mapRoleToValidRole = (rol: string): 'admin' | 'doctor' | 'paciente' => {
     switch (rol.toLowerCase()) {
+      case 'admin':
       case 'administrador':
-        return 'administrador';
+        return 'admin';
       case 'doctor':
         return 'doctor';
       default:
@@ -40,7 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           if (currentUser) {
             const userWithRole: User = {
               ...currentUser,
-              role: mapRoleToValidRole(currentUser.rol || ''),
+              rol: mapRoleToValidRole(currentUser.rol || ''),
               id: currentUser.id.toString(),
             };
             setUser(userWithRole);
@@ -73,7 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const response = await authService.login(email, password);
       const userWithRole: User = {
         ...response.user,
-        role: mapRoleToValidRole(response.user.rol || ''),
+        rol: mapRoleToValidRole(response.user.rol || ''),
         id: response.user.id.toString(),
       };
       setUser(userWithRole);
@@ -134,4 +135,4 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}; 
+};
