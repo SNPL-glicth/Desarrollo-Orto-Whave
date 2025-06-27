@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "logs/.f49abcd795e9b4e9bdb8bf8819268b8e81cc4024-audit.json",
+    "files": [
+        {
+            "date": 1750997042246,
+            "name": "logs/orto-whave-2025-06-27.log",
+            "hash": "d84b785da03a7c4793d7089248cee3e761e675cbca189de70020e4d128466464"
+        }
+    ],
+    "hashType": "sha256"
+}

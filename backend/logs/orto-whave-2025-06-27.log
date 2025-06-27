@@ -1,0 +1,238 @@
+2025-06-27 04:04:02 [INFO] [NestFactory] Starting Nest application...
+2025-06-27 04:04:02 [INFO] [InstanceLoader] AppModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] PassportModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] MailerModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] RolesModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] MailerCoreModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] ConfigHostModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] MailModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] ConfigModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] JwtModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmCoreModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] CitasModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] PerfilMedicoModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] PacientesModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] HistoriaClinicaModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] UsersModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [InstanceLoader] AuthModule dependencies initialized
+2025-06-27 04:04:02 [INFO] [RoutesResolver] AuthController {/auth}:
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/auth/login, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/auth/register, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/auth/verify, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/auth/me, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/auth/forgot-password, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/auth/reset-password, POST} route
+2025-06-27 04:04:02 [INFO] [RoutesResolver] UsersController {/users}:
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/me, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/me, PUT} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/crear-usuario, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/public/crear-usuario, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/public/roles, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/todos, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/por-rol/:rol, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/buscar, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/estadisticas, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/:id, PUT} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/:id/estado, PUT} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/admin/:id, DELETE} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/users/verificar-email/:email, GET} route
+2025-06-27 04:04:02 [INFO] [RoutesResolver] CitasController {/citas}:
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/paciente/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/doctor/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/mis-citas, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/pendientes-aprobacion, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/disponibilidad, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/:id/estado, PATCH} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/:id, DELETE} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/citas/doctor/:doctorId/agenda/:fecha, GET} route
+2025-06-27 04:04:02 [INFO] [RoutesResolver] PerfilMedicoController {/perfil-medico}:
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores-disponibles, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, PATCH} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, PATCH} route
+2025-06-27 04:04:02 [INFO] [RoutesResolver] PacientesController {/pacientes}:
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/mis-pacientes, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/buscar, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/estadisticas, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, PATCH} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, PATCH} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id/primera-consulta, PATCH} route
+2025-06-27 04:04:02 [INFO] [RoutesResolver] HistoriaClinicaController {/historia-clinica}:
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica, POST} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/doctor/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/mi-historia, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/mis-consultas, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/buscar, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/estadisticas, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:pacienteId/ultima, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, GET} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, PATCH} route
+2025-06-27 04:04:02 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, DELETE} route
+2025-06-27 04:04:02 [INFO] [NestApplication] Nest application successfully started
+2025-06-27 04:04:02 [INFO] [Bootstrap] 🚀 Servidor Orto-Whave iniciado en puerto 4000
+2025-06-27 04:04:02 [INFO] [Bootstrap] 📊 Nivel de logging: info
+2025-06-27 04:04:02 [INFO] [Bootstrap] 🌍 Entorno: development
+2025-06-27 04:04:02 [INFO] [Bootstrap] 📝 Logs guardándose en: ./logs/
+2025-06-27 04:05:49 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/forgot-password | Meta: {"method":"POST","url":"/auth/forgot-password","ip":"::1","userAgent":"curl/8.5.0","contentLength":"31","body":{"email":"admin@ortowhave.com"},"headers":{"host":"localhost:4000","user-agent":"curl/8.5.0","accept":"*/*","content-type":"application/json","content-length":"31"}}
+2025-06-27 04:05:49 [INFO] [AuthService] Solicitud de recuperación de contraseña para: admin@ortowhave.com
+2025-06-27 04:05:49 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:05:49 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:05:49 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"141ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:05:59 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/forgot-password | Meta: {"method":"POST","url":"/auth/forgot-password","ip":"::1","userAgent":"curl/8.5.0","contentLength":"31","body":{"email":"admin@ortowhave.com"},"headers":{"host":"localhost:4000","user-agent":"curl/8.5.0","accept":"*/*","content-type":"application/json","content-length":"31"}}
+2025-06-27 04:05:59 [INFO] [AuthService] Solicitud de recuperación de contraseña para: admin@ortowhave.com
+2025-06-27 04:06:00 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:06:00 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:06:00 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"49ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:06:10 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/forgot-password | Meta: {"method":"POST","url":"/auth/forgot-password","ip":"::1","userAgent":"curl/8.5.0","contentLength":"31","body":{"email":"admin@ortowhave.com"},"headers":{"host":"localhost:4000","user-agent":"curl/8.5.0","accept":"*/*","content-type":"application/json","content-length":"31"}}
+2025-06-27 04:06:10 [INFO] [AuthService] Solicitud de recuperación de contraseña para: admin@ortowhave.com
+2025-06-27 04:06:10 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:06:10 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:06:10 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"51ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:06:20 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/forgot-password | Meta: {"method":"POST","url":"/auth/forgot-password","ip":"::1","userAgent":"curl/8.5.0","contentLength":"31","body":{"email":"admin@ortowhave.com"},"headers":{"host":"localhost:4000","user-agent":"curl/8.5.0","accept":"*/*","content-type":"application/json","content-length":"31"}}
+2025-06-27 04:06:20 [INFO] [AuthService] Solicitud de recuperación de contraseña para: admin@ortowhave.com
+2025-06-27 04:06:20 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:06:20 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:06:20 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"110ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:07:30 [INFO] [NestFactory] Starting Nest application...
+2025-06-27 04:07:30 [INFO] [InstanceLoader] AppModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] PassportModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] MailerModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] RolesModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] MailerCoreModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] ConfigHostModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] MailModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] ConfigModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] JwtModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmCoreModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] CitasModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] PerfilMedicoModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] PacientesModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] HistoriaClinicaModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] UsersModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [InstanceLoader] AuthModule dependencies initialized
+2025-06-27 04:07:30 [INFO] [RoutesResolver] AuthController {/auth}:
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/auth/login, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/auth/register, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/auth/verify, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/auth/me, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/auth/forgot-password, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/auth/reset-password, POST} route
+2025-06-27 04:07:30 [INFO] [RoutesResolver] UsersController {/users}:
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/me, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/me, PUT} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/crear-usuario, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/public/crear-usuario, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/public/roles, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/todos, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/por-rol/:rol, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/buscar, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/estadisticas, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/:id, PUT} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/:id/estado, PUT} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/admin/:id, DELETE} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/users/verificar-email/:email, GET} route
+2025-06-27 04:07:30 [INFO] [RoutesResolver] CitasController {/citas}:
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/paciente/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/doctor/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/mis-citas, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/pendientes-aprobacion, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/disponibilidad, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/:id/estado, PATCH} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/:id, DELETE} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/citas/doctor/:doctorId/agenda/:fecha, GET} route
+2025-06-27 04:07:30 [INFO] [RoutesResolver] PerfilMedicoController {/perfil-medico}:
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores-disponibles, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, PATCH} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, PATCH} route
+2025-06-27 04:07:30 [INFO] [RoutesResolver] PacientesController {/pacientes}:
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/mis-pacientes, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/buscar, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/estadisticas, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, PATCH} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, PATCH} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id/primera-consulta, PATCH} route
+2025-06-27 04:07:30 [INFO] [RoutesResolver] HistoriaClinicaController {/historia-clinica}:
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica, POST} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/doctor/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/mi-historia, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/mis-consultas, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/buscar, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/estadisticas, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:pacienteId/ultima, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, GET} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, PATCH} route
+2025-06-27 04:07:30 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, DELETE} route
+2025-06-27 04:07:30 [INFO] [NestApplication] Nest application successfully started
+2025-06-27 04:07:30 [INFO] [Bootstrap] 🚀 Servidor Orto-Whave iniciado en puerto 4000
+2025-06-27 04:07:30 [INFO] [Bootstrap] 📊 Nivel de logging: info
+2025-06-27 04:07:30 [INFO] [Bootstrap] 🌍 Entorno: development
+2025-06-27 04:07:30 [INFO] [Bootstrap] 📝 Logs guardándose en: ./logs/
+2025-06-27 04:09:15 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/forgot-password | Meta: {"method":"POST","url":"/auth/forgot-password","ip":"::1","userAgent":"curl/8.5.0","contentLength":"31","body":{"email":"admin@ortowhave.com"},"headers":{"host":"localhost:4000","user-agent":"curl/8.5.0","accept":"*/*","content-type":"application/json","content-length":"31"}}
+2025-06-27 04:09:15 [INFO] [AuthService] Solicitud de recuperación de contraseña para: admin@ortowhave.com
+2025-06-27 04:09:15 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 20C00A99FFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:09:15 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:09:15 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"112ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)

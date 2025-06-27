@@ -15,6 +15,9 @@ export const mailConfig: MailerOptions = {
       user: process.env.MAIL_USER || 'ethereal.test@example.com',
       pass: process.env.MAIL_PASS || 'test123',
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   },
   defaults: {
     from: process.env.MAIL_FROM || '"Orto-Whave" <noreply@ortowhave.com>',

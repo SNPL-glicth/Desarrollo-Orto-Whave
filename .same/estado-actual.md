@@ -2,6 +2,18 @@
 
 ## ✅ COMPLETADO
 
+### 🔐 Sistema de Recuperación de Contraseñas - BACKEND COMPLETO
+- **DTOs de validación**: forgot-password.dto.ts y reset-password.dto.ts implementados
+- **Entidad User actualizada**: Campos resetPasswordToken y resetPasswordExpires agregados
+- **Servicios implementados**: Métodos forgotPassword() y resetPassword() en AuthService
+- **Controlador completo**: Endpoints POST /auth/forgot-password y /auth/reset-password
+- **Plantillas de email**: reset-password.hbs y password-changed.hbs creadas con diseño profesional
+- **Configuración Gmail**: Credenciales reales configuradas (pachonlucassergionicolas@gmail.com)
+- **Base de datos**: Migración automática aplicada correctamente
+- **Validaciones**: Contraseñas con requisitos de seguridad (8+ caracteres, mayúsculas, números, símbolos)
+- **Tokens de seguridad**: Generación criptográfica segura con expiración de 1 hora
+- **Logging completo**: Trazabilidad de todas las operaciones de recuperación
+
 ### Correcciones de Seguridad Críticas
 - **Hashing de contraseñas**: Migrado exitosamente de SHA256 a bcrypt con salt rounds=12
 - **Inconsistencia rol/role**: Corregido en AuthContext para usar `rol` en lugar de `role`

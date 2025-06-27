@@ -1,0 +1,40 @@
+2025-06-27 04:05:49 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:05:49 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:05:49 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"141ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:06:00 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:06:00 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:06:00 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"49ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:06:10 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:06:10 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:06:10 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"51ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:06:20 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 201096ADFFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:06:20 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:06:20 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"110ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)
+2025-06-27 04:09:15 [ERROR] [AuthService] Error al enviar email de recuperación a admin@ortowhave.com:
+Stack: 20C00A99FFFF0000:error:0A00010B:SSL routines:ssl3_get_record:wrong version number:../deps/openssl/openssl/ssl/record/ssl3_record.c:354:
+
+2025-06-27 04:09:15 [ERROR] [AuthService] Error en forgotPassword para admin@ortowhave.com:
+Stack: Error al enviar el correo de recuperación.
+2025-06-27 04:09:15 [ERROR] [LoggingInterceptor] Error Response: POST /auth/forgot-password - 400 | Meta: {"method":"POST","url":"/auth/forgot-password","statusCode":400,"duration":"112ms","error":"Error al enviar el correo de recuperación."}
+Stack: BadRequestException: Error al enviar el correo de recuperación.
+    at AuthService.forgotPassword (/home/project/backend/src/auth/auth.service.ts:207:15)

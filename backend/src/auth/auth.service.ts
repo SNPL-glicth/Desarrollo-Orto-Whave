@@ -71,15 +71,19 @@ export class AuthService {
 
       return {
         access_token: token,
-      user: {
-        id: user.id,
-        email: user.email,
-        nombre: user.nombre,
-        apellido: user.apellido,
-        rol: user.rol.nombre,
-      },
-      redirect: this.getRedirectPath(user.rol.nombre),
-    };
+        user: {
+          id: user.id,
+          email: user.email,
+          nombre: user.nombre,
+          apellido: user.apellido,
+          rol: user.rol.nombre,
+        },
+        redirect: this.getRedirectPath(user.rol.nombre),
+      };
+    } catch (error) {
+      this.logger.error(`Error generando token JWT para usuario: ${user.email}`, error.message);
+      throw error;
+    }
   }
 
   async register(userData: any) {
