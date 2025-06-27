@@ -1,13 +1,18 @@
-import { Injectable, UnauthorizedException, ConflictException, BadRequestException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, ConflictException, BadRequestException, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../users/entities/user.entity';
 import * as bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
 import { MailerService } from '@nestjs-modules/mailer';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
@@ -16,38 +21,56 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string): Promise<any> {
-    const user = await this.usersRepository.findOne({
-      where: { email },
-      relations: ['rol'],
-    });
+    this.logger.log(`Intentando validar usuario: ${email}`);
 
-    if (!user) {
+    try {
+      const user = await this.usersRepository.findOne({
+        where: { email },
+        relations: ['rol'],
+      });
+
+      if (!user) {
+        this.logger.warn(`Usuario no encontrado: ${email}`);
+        return null;
+      }
+
+      if (!user.isVerified) {
+        this.logger.warn(`Intento de login con cuenta no verificada: ${email}`);
+        throw new UnauthorizedException('La cuenta no ha sido verificada. Por favor revisa tu correo.');
+      }
+
+      // Usar bcrypt para comparar contraseñas
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
+      if (isPasswordValid) {
+        this.logger.log(`Validación exitosa para usuario: ${email} con rol: ${user.rol.nombre}`);
+        const { password, ...result } = user;
+        return result;
+      } else {
+        this.logger.warn(`Contraseña incorrecta para usuario: ${email}`);
+      }
       return null;
+    } catch (error) {
+      this.logger.error(`Error en validateUser para ${email}:`, error.message);
+      throw error;
     }
-
-    if (!user.isVerified) {
-      throw new UnauthorizedException('La cuenta no ha sido verificada. Por favor revisa tu correo.');
-    }
-
-    // Usar bcrypt para comparar contraseñas
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    if (isPasswordValid) {
-      const { password, ...result } = user;
-      return result;
-    }
-    return null;
   }
 
   async login(user: any) {
-    const payload = {
-      email: user.email,
-      sub: user.id,
-      rol: user.rol.nombre,
-    };
+    this.logger.log(`Generando token JWT para usuario: ${user.email} (ID: ${user.id})`);
 
-    return {
-      access_token: this.jwtService.sign(payload),
+    try {
+      const payload = {
+        email: user.email,
+        sub: user.id,
+        rol: user.rol.nombre,
+      };
+
+      const token = this.jwtService.sign(payload);
+      this.logger.log(`Token JWT generado exitosamente para usuario: ${user.email}`);
+
+      return {
+        access_token: token,
       user: {
         id: user.id,
         email: user.email,
@@ -130,6 +153,128 @@ export class AuthService {
     user.verificationCode = null;
     await this.usersRepository.save(user);
     return { message: 'Cuenta verificada exitosamente.' };
+  }
+
+  async forgotPassword(forgotPasswordDto: ForgotPasswordDto): Promise<{ message: string }> {
+    const { email } = forgotPasswordDto;
+    this.logger.log(`Solicitud de recuperación de contraseña para: ${email}`);
+
+    try {
+      const user = await this.usersRepository.findOne({ where: { email } });
+
+      if (!user) {
+        this.logger.warn(`Solicitud de reset para email no existente: ${email}`);
+        // Por seguridad, siempre devolvemos el mismo mensaje
+        return { message: 'Si el correo existe, recibirás un enlace de recuperación.' };
+      }
+
+      // Generar token seguro
+      const resetToken = crypto.randomBytes(32).toString('hex');
+      const resetTokenExpires = new Date();
+      resetTokenExpires.setHours(resetTokenExpires.getHours() + 1); // Token válido por 1 hora
+
+      // Guardar token en la base de datos
+      user.resetPasswordToken = resetToken;
+      user.resetPasswordExpires = resetTokenExpires;
+      await this.usersRepository.save(user);
+
+      // Enviar correo con enlace de recuperación
+      const resetUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/reset-password?token=${resetToken}`;
+
+      try {
+        await this.mailerService.sendMail({
+          to: email,
+          subject: 'Recuperación de contraseña - Orto-Whave',
+          template: './reset-password',
+          context: {
+            resetUrl,
+            email,
+            expiresIn: '1 hora',
+          },
+        });
+
+        this.logger.log(`Email de recuperación enviado a: ${email}`);
+      } catch (emailError) {
+        this.logger.error(`Error al enviar email de recuperación a ${email}:`, emailError.message);
+        // Limpiar el token si no se pudo enviar el email
+        user.resetPasswordToken = null;
+        user.resetPasswordExpires = null;
+        await this.usersRepository.save(user);
+        throw new BadRequestException('Error al enviar el correo de recuperación.');
+      }
+
+      return { message: 'Si el correo existe, recibirás un enlace de recuperación.' };
+    } catch (error) {
+      this.logger.error(`Error en forgotPassword para ${email}:`, error.message);
+      throw error;
+    }
+  }
+
+  async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<{ message: string }> {
+    const { token, newPassword, confirmPassword } = resetPasswordDto;
+    this.logger.log('Intento de reset de contraseña con token');
+
+    try {
+      // Validar que las contraseñas coinciden
+      if (newPassword !== confirmPassword) {
+        throw new BadRequestException('Las contraseñas no coinciden.');
+      }
+
+      // Buscar usuario por token y verificar que no haya expirado
+      const user = await this.usersRepository.findOne({
+        where: {
+          resetPasswordToken: token,
+        },
+      });
+
+      if (!user) {
+        this.logger.warn('Intento de reset con token inválido');
+        throw new BadRequestException('Token de recuperación inválido.');
+      }
+
+      // Verificar si el token ha expirado
+      if (user.resetPasswordExpires < new Date()) {
+        this.logger.warn(`Token expirado para usuario: ${user.email}`);
+        // Limpiar token expirado
+        user.resetPasswordToken = null;
+        user.resetPasswordExpires = null;
+        await this.usersRepository.save(user);
+        throw new BadRequestException('El token de recuperación ha expirado.');
+      }
+
+      // Hashear la nueva contraseña
+      const saltRounds = 12;
+      const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+
+      // Actualizar contraseña y limpiar tokens
+      user.password = hashedPassword;
+      user.resetPasswordToken = null;
+      user.resetPasswordExpires = null;
+      await this.usersRepository.save(user);
+
+      this.logger.log(`Contraseña restablecida exitosamente para usuario: ${user.email}`);
+
+      // Enviar confirmación por email
+      try {
+        await this.mailerService.sendMail({
+          to: user.email,
+          subject: 'Contraseña restablecida - Orto-Whave',
+          template: './password-changed',
+          context: {
+            email: user.email,
+            date: new Date().toLocaleString('es-CO'),
+          },
+        });
+      } catch (emailError) {
+        this.logger.error(`Error al enviar confirmación de cambio de contraseña:`, emailError.message);
+        // No fallar el proceso por error de email
+      }
+
+      return { message: 'Contraseña restablecida exitosamente.' };
+    } catch (error) {
+      this.logger.error('Error en resetPassword:', error.message);
+      throw error;
+    }
   }
 
   private getRedirectPath(rol: string): string {

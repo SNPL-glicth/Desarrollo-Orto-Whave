@@ -39,4 +39,10 @@ export class User {
 
   @Column({ name: 'verification_code', nullable: true, length: 10 })
   verificationCode: string;
+
+  @Column({ name: 'reset_password_token', nullable: true })
+  resetPasswordToken: string;
+
+  @Column({ name: 'reset_password_expires', nullable: true, type: 'datetime' })
+  resetPasswordExpires: Date;
 }

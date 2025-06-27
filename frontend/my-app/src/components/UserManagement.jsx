@@ -7,12 +7,17 @@ import { userService } from '../services/api';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
-  const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('all');
+  const [selectedStatus, setSelectedStatus] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(10);
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
   const { user } = useAuth();
   const [formData, setFormData] = useState({
     firstName: '',
@@ -26,11 +31,16 @@ const UserManagement = () => {
   });
 
   const fetchUsers = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await userService.getUsers();
-      setUsers(response.data);
+      setUsers(response.data || []);
     } catch (error) {
       console.error('Error al obtener usuarios:', error);
+      setError('Error al cargar los usuarios. Intenta nuevamente.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,16 +48,55 @@ const UserManagement = () => {
     fetchUsers();
   }, []);
 
+  // Limpiar mensajes después de un tiempo
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => setSuccessMessage(''), 5000);
+      return () => clearTimeout(timer);
+    }
+    if (error) {
+      const timer = setTimeout(() => setError(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage, error]);
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when searching
   };
 
-  const filteredPatients = patients.filter(patient => 
-    patient.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    patient.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    patient.documentId.includes(searchTerm) ||
-    patient.email?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleRoleFilter = (e) => {
+    setSelectedRole(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleStatusFilter = (e) => {
+    setSelectedStatus(e.target.value);
+    setCurrentPage(1);
+  };
+
+  // Filtrado avanzado de usuarios
+  const filteredUsers = users.filter(user => {
+    const matchesSearch =
+      user.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.apellido?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.documento?.includes(searchTerm);
+
+    const matchesRole = selectedRole === 'all' || user.rol?.nombre === selectedRole;
+
+    const matchesStatus = selectedStatus === 'all' ||
+      (selectedStatus === 'verified' && user.isVerified) ||
+      (selectedStatus === 'unverified' && !user.isVerified);
+
+    return matchesSearch && matchesRole && matchesStatus;
+  });
+
+  // Paginación
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
 
   const handleEdit = (patient) => {
     setSelectedUser(patient);
@@ -65,11 +114,17 @@ const UserManagement = () => {
   };
 
   const deleteUser = async (id) => {
+    if (!window.confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+      return;
+    }
+
     try {
       await userService.deleteUser(id);
+      setSuccessMessage('Usuario eliminado exitosamente');
       fetchUsers(); // Recargar la lista después de eliminar
     } catch (error) {
       console.error('Error al eliminar usuario:', error);
+      setError('Error al eliminar el usuario. Intenta nuevamente.');
     }
   };
 
@@ -84,25 +139,31 @@ const UserManagement = () => {
   const updateUser = async (userData) => {
     try {
       await userService.updateUser(selectedUser.id, userData);
+      setSuccessMessage('Usuario actualizado exitosamente');
       fetchUsers(); // Recargar la lista después de actualizar
     } catch (error) {
       console.error('Error al actualizar usuario:', error);
+      setError('Error al actualizar el usuario. Intenta nuevamente.');
+      throw error; // Re-throw to handle in handleSubmit
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       await updateUser(formData);
       setIsModalOpen(false);
+      setSelectedUser(null);
     } catch (error) {
       console.error('Error al actualizar usuario:', error);
+      // Error is already handled in updateUser
     }
   };
 
   const handleUserCreated = (newUser) => {
-    setUsers([...users, newUser]);
+    setSuccessMessage('Usuario creado exitosamente');
+    setIsCreateModalOpen(false);
     fetchUsers(); // Recargar la lista de usuarios
   };
 
@@ -111,7 +172,7 @@ const UserManagement = () => {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Gestión de Usuarios</h1>
         <div className="flex space-x-2">
-        <button 
+        <button
           onClick={fetchUsers}
           className="flex items-center text-primary hover:text-primary-dark"
         >
@@ -129,7 +190,7 @@ const UserManagement = () => {
           )}
         </div>
       </div>
-      
+
       <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
         <div className="flex items-center mb-6 relative">
           <MagnifyingGlassIcon className="h-5 w-5 text-gray-400 absolute left-3" />
@@ -141,7 +202,7 @@ const UserManagement = () => {
             onChange={handleSearch}
           />
         </div>
-        
+
         {loading ? (
           <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
@@ -193,14 +254,14 @@ const UserManagement = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                        patient.role === 'ROLE_ADMIN' ? 'bg-purple-100 text-purple-800' : 
-                        patient.role === 'ROLE_DOCTOR' ? 'bg-green-100 text-green-800' : 
-                        patient.role === 'ROLE_ASSISTANT' ? 'bg-yellow-100 text-yellow-800' : 
+                        patient.role === 'ROLE_ADMIN' ? 'bg-purple-100 text-purple-800' :
+                        patient.role === 'ROLE_DOCTOR' ? 'bg-green-100 text-green-800' :
+                        patient.role === 'ROLE_ASSISTANT' ? 'bg-yellow-100 text-yellow-800' :
                         'bg-blue-100 text-blue-800'
                       }`}>
-                        {patient.role === 'ROLE_ADMIN' ? 'Administrador' : 
-                         patient.role === 'ROLE_DOCTOR' ? 'Doctor' : 
-                         patient.role === 'ROLE_ASSISTANT' ? 'Asistente' : 
+                        {patient.role === 'ROLE_ADMIN' ? 'Administrador' :
+                         patient.role === 'ROLE_DOCTOR' ? 'Doctor' :
+                         patient.role === 'ROLE_ASSISTANT' ? 'Asistente' :
                          'Paciente'}
                       </span>
                     </td>
@@ -225,7 +286,7 @@ const UserManagement = () => {
                     </td>
                   </tr>
                 ))}
-                
+
                 {filteredPatients.length === 0 && (
                   <tr>
                     <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
@@ -238,11 +299,11 @@ const UserManagement = () => {
           </div>
         )}
       </div>
-      
+
       {/* Modal de edición */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white rounded-lg shadow-xl p-6 w-full max-w-2xl"
@@ -338,7 +399,7 @@ const UserManagement = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="flex justify-end space-x-3 mt-6">
                 <button
                   type="button"
@@ -370,4 +431,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement; 
+export default UserManagement;
