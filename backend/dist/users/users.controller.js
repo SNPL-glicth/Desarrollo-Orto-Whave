@@ -54,6 +54,12 @@ let UsersController = class UsersController {
         }
         return await this.usersService.crearUsuarioAdmin(crearUsuarioDto);
     }
+    async crearUsuarioPublico(crearUsuarioDto) {
+        return await this.usersService.crearUsuarioAdmin(crearUsuarioDto);
+    }
+    async obtenerRoles() {
+        return await this.usersService.obtenerRoles();
+    }
     async obtenerTodosLosUsuarios(req) {
         const usuario = req.user;
         if (usuario.rol.nombre !== 'admin') {
@@ -149,6 +155,19 @@ __decorate([
     __metadata("design:paramtypes", [crear_usuario_admin_dto_1.CrearUsuarioAdminDto, Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "crearUsuarioAdmin", null);
+__decorate([
+    (0, common_1.Post)('public/crear-usuario'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [crear_usuario_admin_dto_1.CrearUsuarioAdminDto]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "crearUsuarioPublico", null);
+__decorate([
+    (0, common_1.Get)('public/roles'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "obtenerRoles", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('admin/todos'),

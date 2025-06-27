@@ -33,6 +33,8 @@ export declare class UsersController {
         verificationCode: string;
     }>;
     crearUsuarioAdmin(crearUsuarioDto: CrearUsuarioAdminDto, req: any): Promise<User>;
+    crearUsuarioPublico(crearUsuarioDto: CrearUsuarioAdminDto): Promise<User>;
+    obtenerRoles(): Promise<import("../roles/entities/role.entity").Role[]>;
     obtenerTodosLosUsuarios(req: any): Promise<User[]>;
     obtenerUsuariosPorRol(rol: string, req: any): Promise<User[]>;
     buscarUsuarios(termino: string, req: any): Promise<User[]>;

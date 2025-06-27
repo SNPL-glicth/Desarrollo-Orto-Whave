@@ -7,6 +7,37 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import { useAuth } from './context/AuthContext';
+import CreateUserForm from './components/CreateUserForm';
+
+// Dashboards temporales simples
+const AdminDashboard = () => (
+  <div className="min-h-screen bg-gray-100 p-8">
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-8">Panel de Administración</h1>
+      <div className="bg-white rounded-lg shadow p-6">
+        <h2 className="text-xl font-semibold mb-4">Gestión de Usuarios</h2>
+        <a
+          href="/usuarios/crear"
+          className="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Crear Nuevo Usuario
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+const DoctorDashboard = () => (
+  <div className="min-h-screen bg-gray-100 p-8">
+    <h1 className="text-3xl font-bold">Panel del Doctor</h1>
+  </div>
+);
+
+const PatientDashboard = () => (
+  <div className="min-h-screen bg-gray-100 p-8">
+    <h1 className="text-3xl font-bold">Panel del Paciente</h1>
+  </div>
+);
 
 function ProtectedRoute({ children, role }) {
   const { user } = useAuth();
@@ -15,7 +46,18 @@ function ProtectedRoute({ children, role }) {
   return children;
 }
 
-const TempDashboard = () => <div>Dashboard Temporal</div>;
+const CreateUserPage = () => {
+  return (
+    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md mx-auto">
+        <CreateUserForm
+          onClose={() => window.history.back()}
+          onUserCreated={() => {}}
+        />
+      </div>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
   return (
@@ -30,8 +72,8 @@ const App: React.FC = () => {
             <Route
               path="/dashboard/admin"
               element={
-                <ProtectedRoute role="administrador">
-                  <TempDashboard />
+                <ProtectedRoute role="admin">
+                  <AdminDashboard />
                 </ProtectedRoute>
               }
             />
@@ -39,7 +81,7 @@ const App: React.FC = () => {
               path="/dashboard/doctor"
               element={
                 <ProtectedRoute role="doctor">
-                  <TempDashboard />
+                  <DoctorDashboard />
                 </ProtectedRoute>
               }
             />
@@ -47,11 +89,19 @@ const App: React.FC = () => {
               path="/dashboard/patient"
               element={
                 <ProtectedRoute role="paciente">
-                  <TempDashboard />
+                  <PatientDashboard />
                 </ProtectedRoute>
               }
             />
-            <Route path="/dashboard" element={<TempDashboard />} />
+            <Route
+              path="/usuarios/crear"
+              element={
+                <ProtectedRoute role="admin">
+                  <CreateUserPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/dashboard" element={<AdminDashboard />} />
           </Routes>
         </Router>
       </CartProvider>

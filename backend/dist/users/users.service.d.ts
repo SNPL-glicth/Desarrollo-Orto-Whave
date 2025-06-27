@@ -29,4 +29,5 @@ export declare class UsersService {
         };
     }>;
     verificarEmailDisponible(email: string): Promise<boolean>;
+    obtenerRoles(): Promise<Role[]>;
 }

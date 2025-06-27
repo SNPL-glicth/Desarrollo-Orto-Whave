@@ -185,4 +185,11 @@ export class UsersService {
     const count = await this.usersRepository.count({ where: { email } });
     return count === 0;
   }
+
+  async obtenerRoles(): Promise<Role[]> {
+    return await this.rolesRepository.find({
+      where: { activo: true },
+      order: { nombre: 'ASC' }
+    });
+  }
 }

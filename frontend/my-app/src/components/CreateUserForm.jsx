@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
 const CreateUserForm = ({ onClose, onUserCreated }) => {
@@ -8,26 +8,46 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
     email: '',
     password: '',
     telefono: '',
-    rol: 'DOCTOR' // Por defecto DOCTOR, ya que PACIENTE usa el registro normal
+    direccion: '',
+    rolId: 2 // Por defecto doctor
   });
+
+  const [roles, setRoles] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Cargar roles disponibles
+    const fetchRoles = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/users/public/roles');
+        if (response.ok) {
+          const rolesData = await response.json();
+          setRoles(rolesData);
+        }
+      } catch (error) {
+        console.error('Error al cargar roles:', error);
+      }
+    };
+    fetchRoles();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: value
+      [name]: name === 'rolId' ? parseInt(value) : value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setLoading(true);
+
     try {
-      const response = await fetch('http://localhost:8080/api/auth/users', {
+      const response = await fetch('http://localhost:4000/users/public/crear-usuario', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
@@ -35,8 +55,20 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
       if (response.ok) {
         const data = await response.json();
         toast.success('Usuario creado exitosamente');
-        onUserCreated(data);
-        onClose();
+        onUserCreated && onUserCreated(data);
+
+        // Limpiar formulario
+        setFormData({
+          nombre: '',
+          apellido: '',
+          email: '',
+          password: '',
+          telefono: '',
+          direccion: '',
+          rolId: 2
+        });
+
+        onClose && onClose();
       } else {
         const error = await response.json();
         toast.error(error.message || 'Error al crear el usuario');
@@ -44,6 +76,8 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
     } catch (error) {
       console.error('Error:', error);
       toast.error('Error al crear el usuario');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,7 +98,7 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Apellido</label>
               <input
@@ -76,7 +110,7 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Email</label>
               <input
@@ -88,7 +122,7 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Contraseña</label>
               <input
@@ -100,7 +134,7 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Teléfono</label>
               <input
@@ -108,25 +142,38 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleInputChange}
-                required
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
               />
             </div>
-            
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Dirección</label>
+              <input
+                type="text"
+                name="direccion"
+                value={formData.direccion}
+                onChange={handleInputChange}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+              />
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Rol</label>
               <select
-                name="rol"
-                value={formData.rol}
+                name="rolId"
+                value={formData.rolId}
                 onChange={handleInputChange}
                 required
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
               >
-                <option value="DOCTOR">Doctor</option>
-                <option value="ADMIN">Administrador</option>
+                {roles.map(rol => (
+                  <option key={rol.id} value={rol.id}>
+                    {rol.nombre.charAt(0).toUpperCase() + rol.nombre.slice(1)}
+                  </option>
+                ))}
               </select>
             </div>
-            
+
             <div className="flex justify-end space-x-3 mt-5">
               <button
                 type="button"
@@ -137,9 +184,10 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                disabled={loading}
+                className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary-dark rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50"
               >
-                Crear Usuario
+                {loading ? 'Creando...' : 'Crear Usuario'}
               </button>
             </div>
           </form>
@@ -149,4 +197,4 @@ const CreateUserForm = ({ onClose, onUserCreated }) => {
   );
 };
 
-export default CreateUserForm; 
+export default CreateUserForm;

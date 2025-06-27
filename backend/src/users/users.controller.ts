@@ -56,6 +56,18 @@ export class UsersController {
     return await this.usersService.crearUsuarioAdmin(crearUsuarioDto);
   }
 
+  // Endpoint público para crear usuarios sin autenticación (para uso del administrador)
+  @Post('public/crear-usuario')
+  async crearUsuarioPublico(@Body() crearUsuarioDto: CrearUsuarioAdminDto) {
+    return await this.usersService.crearUsuarioAdmin(crearUsuarioDto);
+  }
+
+  // Endpoint público para obtener roles
+  @Get('public/roles')
+  async obtenerRoles() {
+    return await this.usersService.obtenerRoles();
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get('admin/todos')
   async obtenerTodosLosUsuarios(@Request() req) {

@@ -158,6 +158,12 @@ let UsersService = class UsersService {
         const count = await this.usersRepository.count({ where: { email } });
         return count === 0;
     }
+    async obtenerRoles() {
+        return await this.rolesRepository.find({
+            where: { activo: true },
+            order: { nombre: 'ASC' }
+        });
+    }
 };
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([

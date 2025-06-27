@@ -93,6 +93,31 @@ cd Desarrollo-Orto-Whave
 
 **🎉 EL PROYECTO ESTÁ LISTO PARA USAR EN DEBIAN**
 
+## ✅ NUEVAS FUNCIONALIDADES AGREGADAS
+
+### 3. [COMPLETED] Gestión de Usuarios para Administrador
+- **Estado**: completed
+- **Descripción**: Funcionalidad completa para que el administrador pueda agregar usuarios sin autenticación
+- **Funcionalidades implementadas**:
+  - ✅ Base de datos limpia con usuarios específicos (admin, doctor, paciente)
+  - ✅ Endpoint público `/users/public/crear-usuario` sin autenticación JWT
+  - ✅ Endpoint público `/users/public/roles` para obtener roles
+  - ✅ Interfaz de administrador para crear usuarios con cualquier nombre/credenciales
+  - ✅ Formulario completo con todos los campos necesarios
+  - ✅ Rutas configuradas para acceso por roles
+  - ✅ Nuevos usuarios pueden iniciar sesión en sus dashboards respectivos
+- **Credenciales específicas establecidas**:
+  - ✅ admin@ortowhave.com / admin123 → Dashboard Admin
+  - ✅ doctor@ortowhave.com / doctor123 → Dashboard Doctor
+  - ✅ paciente@ortowhave.com / paciente123 → Dashboard Paciente
+- **Archivos modificados/creados**:
+  - ✅ `setup-usuarios-especificos.js` (script de limpieza)
+  - ✅ `backend/src/users/users.controller.ts` (nuevos endpoints)
+  - ✅ `backend/src/users/users.service.ts` (método obtenerRoles)
+  - ✅ `frontend/my-app/src/components/CreateUserForm.jsx` (formulario mejorado)
+  - ✅ `frontend/my-app/src/App.tsx` (rutas configuradas)
+  - ✅ `.same/tarea-admin-gestion-usuarios.md` (documentación completa)
+
 ### Correcciones Realizadas:
 1. ✅ Eliminados tipos enum incompatibles con SQLite
 2. ✅ Configurado JWT secret automático y seguro
