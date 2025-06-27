@@ -1,19 +1,23 @@
 import { MailerOptions } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
+import * as dotenv from 'dotenv';
+
+// Cargar variables de entorno
+dotenv.config();
 
 export const mailConfig: MailerOptions = {
   transport: {
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+    host: process.env.MAIL_HOST || 'smtp.ethereal.email',
+    port: parseInt(process.env.MAIL_PORT) || 587,
+    secure: process.env.MAIL_SECURE === 'true' || false,
     auth: {
-      user: 'pachonlucassergionicolas@gmail.com',
-      pass: 'roen axoq wppd yvxl',
+      user: process.env.MAIL_USER || 'ethereal.test@example.com',
+      pass: process.env.MAIL_PASS || 'test123',
     },
   },
   defaults: {
-    from: '"Orto-Whave" <pachonlucassergionicolas@gmail.com>',
+    from: process.env.MAIL_FROM || '"Orto-Whave" <noreply@ortowhave.com>',
   },
   template: {
     dir: join(__dirname, '..', 'templates'),
@@ -22,4 +26,4 @@ export const mailConfig: MailerOptions = {
       strict: true,
     },
   },
-}; 
+};
