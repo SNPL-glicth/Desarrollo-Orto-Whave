@@ -482,3 +482,211 @@ Stack: QueryFailedError: SQLITE_CONSTRAINT: NOT NULL constraint failed: usuarios
 2025-06-27 04:35:57 [INFO] [LoggingInterceptor] Outgoing Response: POST /users/admin/crear-usuario - 201 | Meta: {"method":"POST","url":"/users/admin/crear-usuario","statusCode":201,"duration":"284ms","responseSize":319}
 2025-06-27 04:35:57 [INFO] [LoggingInterceptor] Incoming Request: GET /users/admin/todos | Meta: {"method":"GET","url":"/users/admin/todos","ip":"::1","userAgent":"node-fetch/1.0 (+https://github.com/bitinn/node-fetch)","contentLength":"0","body":{},"headers":{"authorization":"[REDACTED]","accept":"*/*","user-agent":"node-fetch/1.0 (+https://github.com/bitinn/node-fetch)","accept-encoding":"gzip,deflate","host":"localhost:4000","connection":"keep-alive"}}
 2025-06-27 04:35:57 [INFO] [LoggingInterceptor] Outgoing Response: GET /users/admin/todos - 200 | Meta: {"method":"GET","url":"/users/admin/todos","statusCode":200,"duration":"1ms","responseSize":2910}
+2025-06-27 05:05:58 [INFO] [NestFactory] Starting Nest application...
+2025-06-27 05:05:58 [INFO] [InstanceLoader] AppModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] PassportModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] MailerModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] RolesModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] MailerCoreModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] ConfigHostModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] MailModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] ConfigModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] JwtModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmCoreModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] CitasModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] PerfilMedicoModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] PacientesModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] HistoriaClinicaModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] UsersModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [InstanceLoader] AuthModule dependencies initialized
+2025-06-27 05:05:58 [INFO] [RoutesResolver] AuthController {/auth}:
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/auth/login, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/auth/register, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/auth/verify, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/auth/me, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/auth/forgot-password, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/auth/reset-password, POST} route
+2025-06-27 05:05:58 [INFO] [RoutesResolver] UsersController {/users}:
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/me, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/me, PUT} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/crear-usuario, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/public/crear-usuario, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/public/roles, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/todos, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/por-rol/:rol, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/buscar, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/estadisticas, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/:id, PUT} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/:id/estado, PUT} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/admin/:id, DELETE} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/users/verificar-email/:email, GET} route
+2025-06-27 05:05:58 [INFO] [RoutesResolver] CitasController {/citas}:
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/paciente/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/doctor/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/mis-citas, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/pendientes-aprobacion, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/disponibilidad, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/:id/estado, PATCH} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/:id, DELETE} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/citas/doctor/:doctorId/agenda/:fecha, GET} route
+2025-06-27 05:05:58 [INFO] [RoutesResolver] PerfilMedicoController {/perfil-medico}:
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores-disponibles, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, PATCH} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, PATCH} route
+2025-06-27 05:05:58 [INFO] [RoutesResolver] PacientesController {/pacientes}:
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/mis-pacientes, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/buscar, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/estadisticas, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, PATCH} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, PATCH} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id/primera-consulta, PATCH} route
+2025-06-27 05:05:58 [INFO] [RoutesResolver] HistoriaClinicaController {/historia-clinica}:
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica, POST} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/doctor/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/mi-historia, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/mis-consultas, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/buscar, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/estadisticas, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:pacienteId/ultima, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, GET} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, PATCH} route
+2025-06-27 05:05:58 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, DELETE} route
+2025-06-27 05:05:58 [INFO] [NestApplication] Nest application successfully started
+2025-06-27 05:05:58 [INFO] [Bootstrap] 🚀 Servidor Orto-Whave iniciado en puerto 4000
+2025-06-27 05:05:58 [INFO] [Bootstrap] 📊 Nivel de logging: info
+2025-06-27 05:05:58 [INFO] [Bootstrap] 🌍 Entorno: development
+2025-06-27 05:05:58 [INFO] [Bootstrap] 📝 Logs guardándose en: ./logs/
+2025-06-27 05:11:38 [INFO] [NestFactory] Starting Nest application...
+2025-06-27 05:11:38 [INFO] [InstanceLoader] AppModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] PassportModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] MailerModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] RolesModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] MailerCoreModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] ConfigHostModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] MailModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] ConfigModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] JwtModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmCoreModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] TypeOrmModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] CitasModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] PerfilMedicoModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] PacientesModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] HistoriaClinicaModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] UsersModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [InstanceLoader] AuthModule dependencies initialized
+2025-06-27 05:11:38 [INFO] [RoutesResolver] AuthController {/auth}:
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/auth/login, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/auth/register, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/auth/verify, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/auth/me, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/auth/forgot-password, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/auth/reset-password, POST} route
+2025-06-27 05:11:38 [INFO] [RoutesResolver] UsersController {/users}:
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/me, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/me, PUT} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/crear-usuario, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/public/crear-usuario, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/public/roles, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/todos, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/por-rol/:rol, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/buscar, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/estadisticas, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/:id, PUT} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/:id/estado, PUT} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/admin/:id, DELETE} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/users/verificar-email/:email, GET} route
+2025-06-27 05:11:38 [INFO] [RoutesResolver] CitasController {/citas}:
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/paciente/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/doctor/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/mis-citas, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/pendientes-aprobacion, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/disponibilidad, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/:id/estado, PATCH} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/:id, DELETE} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/citas/doctor/:doctorId/agenda/:fecha, GET} route
+2025-06-27 05:11:38 [INFO] [RoutesResolver] PerfilMedicoController {/perfil-medico}:
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico/doctores-disponibles, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico/mi-perfil, PATCH} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/perfil-medico/usuario/:id, PATCH} route
+2025-06-27 05:11:38 [INFO] [RoutesResolver] PacientesController {/pacientes}:
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/mis-pacientes, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/buscar, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/estadisticas, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/mi-perfil, PATCH} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id, PATCH} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/pacientes/usuario/:id/primera-consulta, PATCH} route
+2025-06-27 05:11:38 [INFO] [RoutesResolver] HistoriaClinicaController {/historia-clinica}:
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica, POST} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/doctor/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/mi-historia, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/mis-consultas, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/buscar, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/estadisticas, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/paciente/:pacienteId/ultima, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, GET} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, PATCH} route
+2025-06-27 05:11:38 [INFO] [RouterExplorer] Mapped {/historia-clinica/:id, DELETE} route
+2025-06-27 05:11:38 [INFO] [NestApplication] Nest application successfully started
+2025-06-27 05:11:38 [INFO] [Bootstrap] 🚀 Servidor Orto-Whave iniciado en puerto 4000
+2025-06-27 05:11:38 [INFO] [Bootstrap] 📊 Nivel de logging: info
+2025-06-27 05:11:38 [INFO] [Bootstrap] 🌍 Entorno: development
+2025-06-27 05:11:38 [INFO] [Bootstrap] 📝 Logs guardándose en: ./logs/
+2025-06-27 05:13:21 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/register | Meta: {"method":"POST","url":"/auth/register","ip":"::1","userAgent":"axios/1.10.0","contentLength":"120","body":{"nombre":"Admin","apellido":"Test","email":"admin.test.1751001201774@test.com","password":"[REDACTED]","rolId":1},"headers":{"accept":"application/json, text/plain, */*","content-type":"application/json","user-agent":"axios/1.10.0","content-length":"120","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:22 [INFO] [LoggingInterceptor] Outgoing Response: POST /auth/register - 201 | Meta: {"method":"POST","url":"/auth/register","statusCode":201,"duration":"433ms","responseSize":143}
+2025-06-27 05:13:22 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/register | Meta: {"method":"POST","url":"/auth/register","ip":"::1","userAgent":"axios/1.10.0","contentLength":"122","body":{"nombre":"Doctor","apellido":"Test","email":"doctor.test.1751001202219@test.com","password":"[REDACTED]","rolId":2},"headers":{"accept":"application/json, text/plain, */*","content-type":"application/json","user-agent":"axios/1.10.0","content-length":"122","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:22 [INFO] [LoggingInterceptor] Outgoing Response: POST /auth/register - 201 | Meta: {"method":"POST","url":"/auth/register","statusCode":201,"duration":"307ms","responseSize":144}
+2025-06-27 05:13:22 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/register | Meta: {"method":"POST","url":"/auth/register","ip":"::1","userAgent":"axios/1.10.0","contentLength":"125","body":{"nombre":"Paciente","apellido":"Test","email":"patient.test.1751001202530@test.com","password":"[REDACTED]","rolId":3},"headers":{"accept":"application/json, text/plain, */*","content-type":"application/json","user-agent":"axios/1.10.0","content-length":"125","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:22 [INFO] [LoggingInterceptor] Outgoing Response: POST /auth/register - 201 | Meta: {"method":"POST","url":"/auth/register","statusCode":201,"duration":"306ms","responseSize":145}
+2025-06-27 05:13:49 [INFO] [LoggingInterceptor] Incoming Request: POST /auth/login | Meta: {"method":"POST","url":"/auth/login","ip":"::1","userAgent":"axios/1.10.0","contentLength":"53","body":{"email":"admin@ortowhave.com","password":"[REDACTED]"},"headers":{"accept":"application/json, text/plain, */*","content-type":"application/json","user-agent":"axios/1.10.0","content-length":"53","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:49 [INFO] [AuthService] Intentando validar usuario: admin@ortowhave.com
+2025-06-27 05:13:49 [INFO] [AuthService] Validación exitosa para usuario: admin@ortowhave.com con rol: admin
+2025-06-27 05:13:49 [INFO] [AuthService] Generando token JWT para usuario: admin@ortowhave.com (ID: 5)
+2025-06-27 05:13:49 [INFO] [AuthService] Token JWT generado exitosamente para usuario: admin@ortowhave.com
+2025-06-27 05:13:49 [INFO] [LoggingInterceptor] Outgoing Response: POST /auth/login - 201 | Meta: {"method":"POST","url":"/auth/login","statusCode":201,"duration":"275ms","responseSize":352}
+2025-06-27 05:13:49 [INFO] [LoggingInterceptor] Incoming Request: GET /users/admin/todos | Meta: {"method":"GET","url":"/users/admin/todos","ip":"::1","userAgent":"axios/1.10.0","contentLength":"0","body":{},"headers":{"accept":"application/json, text/plain, */*","authorization":"[REDACTED]","user-agent":"axios/1.10.0","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:49 [INFO] [LoggingInterceptor] Outgoing Response: GET /users/admin/todos - 200 | Meta: {"method":"GET","url":"/users/admin/todos","statusCode":200,"duration":"3ms","responseSize":3740}
+2025-06-27 05:13:49 [INFO] [LoggingInterceptor] Incoming Request: POST /users/admin/crear-usuario | Meta: {"method":"POST","url":"/users/admin/crear-usuario","ip":"::1","userAgent":"axios/1.10.0","contentLength":"412","body":{"email":"doctor.demo.1751001229864@ortowhave.com","password":"[REDACTED]","nombre":"Doctor","apellido":"Demo","telefono":"3001234567","direccion":"Consultorio Demo","rolId":2,"perfilMedico":{"numeroRegistroMedico":"RM1751001229864","especialidad":"Ortopedia y Traumatología","universidadEgreso":"Universidad Demo","añoGraduacion":2020,"biografia":"Doctor de prueba creado por admin","tarifaConsulta":200000}},"headers":{"accept":"application/json, text/plain, */*","content-type":"application/json","authorization":"[REDACTED]","user-agent":"axios/1.10.0","content-length":"412","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:50 [INFO] [LoggingInterceptor] Outgoing Response: POST /users/admin/crear-usuario - 201 | Meta: {"method":"POST","url":"/users/admin/crear-usuario","statusCode":201,"duration":"286ms","responseSize":299}
+2025-06-27 05:13:50 [INFO] [LoggingInterceptor] Incoming Request: POST /users/admin/crear-usuario | Meta: {"method":"POST","url":"/users/admin/crear-usuario","ip":"::1","userAgent":"axios/1.10.0","contentLength":"331","body":{"email":"paciente.demo.1751001230157@ortowhave.com","password":"[REDACTED]","nombre":"Paciente","apellido":"Demo","telefono":"3007654321","direccion":"Dirección Demo","rolId":3,"perfilPaciente":{"numeroIdentificacion":"CC1751001230157","tipoIdentificacion":"CC","fechaNacimiento":"1985-06-15","genero":"masculino","eps":"Sura"}},"headers":{"accept":"application/json, text/plain, */*","content-type":"application/json","authorization":"[REDACTED]","user-agent":"axios/1.10.0","content-length":"331","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:50 [INFO] [LoggingInterceptor] Outgoing Response: POST /users/admin/crear-usuario - 201 | Meta: {"method":"POST","url":"/users/admin/crear-usuario","statusCode":201,"duration":"284ms","responseSize":301}
+2025-06-27 05:13:50 [INFO] [LoggingInterceptor] Incoming Request: GET /users/admin/todos | Meta: {"method":"GET","url":"/users/admin/todos","ip":"::1","userAgent":"axios/1.10.0","contentLength":"0","body":{},"headers":{"accept":"application/json, text/plain, */*","authorization":"[REDACTED]","user-agent":"axios/1.10.0","accept-encoding":"gzip, compress, deflate, br","host":"localhost:4000","connection":"keep-alive"}}
+2025-06-27 05:13:50 [INFO] [LoggingInterceptor] Outgoing Response: GET /users/admin/todos - 200 | Meta: {"method":"GET","url":"/users/admin/todos","statusCode":200,"duration":"2ms","responseSize":4348}
